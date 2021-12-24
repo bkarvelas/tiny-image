@@ -1,2 +1,2 @@
-# tiny-image
+# TinyImage
 Image compressor
