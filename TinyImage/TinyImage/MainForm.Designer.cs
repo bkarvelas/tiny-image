@@ -1,6 +1,6 @@
 ﻿namespace TinyImage
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 528);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Tiny Image";
             this.ResumeLayout(false);
 
