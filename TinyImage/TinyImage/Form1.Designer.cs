@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace TinyImage
 {
     partial class Form1
     {
@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 558);
+            this.ClientSize = new System.Drawing.Size(861, 528);
             this.Name = "Form1";
             this.Text = "Tiny Image";
             this.ResumeLayout(false);
