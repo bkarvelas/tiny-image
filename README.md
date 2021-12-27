@@ -1,2 +1,2 @@
 # TinyImage
-Image compressor
+Tinify Image through www.tinyjpg.com API
