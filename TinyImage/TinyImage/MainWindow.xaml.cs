@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TinifyAPI;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -23,6 +24,30 @@ namespace TinyImage
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            validateAPI();
+        }
+
+        private void compressFile()
+        {
+        }
+
+        private async void validateAPI()
+        {
+            try
+            {
+                labelError.Content = string.Empty;
+                Tinify.Key = textBoxAPI.Text;
+                await Tinify.Validate();
+                labelError.Content = "SUCCESS";
+            }
+            catch (Exception e)
+            {
+                labelError.Content = e.Message;
+            }
         }
     }
 }

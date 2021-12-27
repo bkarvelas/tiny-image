@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TinyImage"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TinyImage" Style="{DynamicResource CustomWindowStyle}" Icon="assets/TinyImage-Icon-.png" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="buttonValidate" Content="Validate" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Height="21" Width="99" Click="Button_Click"/>
+        <TextBox x:Name="textBoxAPI" AcceptsReturn="True" HorizontalAlignment="Center" Margin="0,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" Height="26"/>
+        <Label Content="Insert API Key" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="33" Width="109" FontSize="15"/>
+        <Label x:Name="labelError" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,121,0,0" VerticalAlignment="Top" Height="34" FontSize="15" Width="244"/>
+
     </Grid>
 </Window>
