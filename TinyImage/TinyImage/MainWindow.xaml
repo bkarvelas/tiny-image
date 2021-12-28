@@ -3,25 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TinyImage"
-        xmlns:viewmodels="clr-namespace:TinyImage.ViewModels"
-        xmlns:views="clr-namespace:TinyImage.Views"
+        xmlns:local="clr-namespace:TinyImage;assembly=TinyImage"
         mc:Ignorable="d"
         Title="TinyImage" Style="{DynamicResource CustomWindowStyle}" Icon="assets/TinyImage-Icon.png" Height="450" Width="800">
-    <Window.Resources>
-        <DataTemplate x:Name="APIValidationTemplate" DataType="{x:Type viewmodels:APIValidation}">
-            <views:APIValidation DataContext="{Binding}" />
-        </DataTemplate>
-    </Window.Resources>
-    <Grid>
-        <!--<DockPanel Background="Gray" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-
-            <StackPanel>
-                <Button Content="Red View" Click="RedView_Clicked"/>
-                <Button Content="Blue View" Click="BlueView_Clicked"/>
-                <Button Content="Orange View" Click="OrangeView_Clicked"/>
-            </StackPanel>
-        </DockPanel>-->
-        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" Content="{Binding}"/>
-    </Grid>
 </Window>

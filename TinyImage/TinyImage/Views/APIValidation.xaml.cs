@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TinifyAPI;
 
 namespace TinyImage.Views
@@ -21,18 +11,16 @@ namespace TinyImage.Views
     /// </summary>
     public partial class APIValidation : UserControl
     {
-        private ViewModels.APIValidation apiValidation;
 
         public APIValidation()
         {
             InitializeComponent();
-            apiValidation = new ViewModels.APIValidation();
         }
 
         // If validate button clicked run validateAPIKey
         private void validateButton_Click(object sender, RoutedEventArgs e)
         {
-            apiValidation.validateAPIKey(errorLabel,APITextBox);
+            validateAPIKey();
         }
 
         // If Enter key is Down/Pressed run validateAPIKey
@@ -40,7 +28,22 @@ namespace TinyImage.Views
         {
             if (e.Key == Key.Return)
             {
-                apiValidation.validateAPIKey(errorLabel,APITextBox);
+                validateAPIKey();
+            }
+        }
+        public async void validateAPIKey()
+        {
+            try
+            {
+                Tinify.Key = APITextBox.Text;
+                await Tinify.Validate();
+
+                // Change view to TinifyImages
+                Application.Current.MainWindow.Content = new TinifyImages();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "An Error has occured");
             }
         }
     }

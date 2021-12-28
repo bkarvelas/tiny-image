@@ -9,7 +9,6 @@
     <Grid>
         <Label Content="Insert API Key" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Height="33" Width="109" FontSize="15"/>
         <TextBox x:Name="APITextBox" KeyDown="OnEnterKeyDownHandler" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,160,0,0"  TextWrapping="Wrap"  Width="252" Height="26"/>
-        <Label x:Name="errorLabel" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="top" Margin="0,190,0,0"  Height="34" FontSize="15" Width="244"/>
         <Button x:Name="validateButton" Content="Validate" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Height="21" Width="99" Click="validateButton_Click"/>
     </Grid>
 </UserControl>
