@@ -7,12 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid Width="500" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="syncButton"  Content="Sync" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Height="37" Width="132"/>
-            <Button Content="Source Folder" Width="100" Height="30" Margin="-100 -70 0 0" />
-            <Button Content="Output Folder" Width="100" Height="30" Margin="-100 0 0 0"/>
-            <Label x:Name="sourceFolderLabel" Content="placeholder" HorizontalAlignment="Left" Margin="268,102,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="ouputFolderLabel" Content="placeholder" HorizontalAlignment="Left" Margin="268,0,0,0" VerticalAlignment="Center"/>
+        <Grid Width="714" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ToggleButton x:Name="syncButton"  Content="Sync" HorizontalAlignment="Left" Background="#FF2D2D2D" Margin="257,66,0,0" VerticalAlignment="Top" Height="30" Width="100" Checked="syncButton_Checked" Unchecked="syncButton_Unchecked"/>
+            <Button x:Name="sourceFolderButton" Content="Source Folder" Width="100" Height="30" Margin="257,100,357,170" Click="sourceFolderButton_Click" />
+            <Button x:Name="ouputFolderButton" Content="Output Folder" Width="100" Height="30" Margin="257,135,357,135" Click="ouputFolderButton_Click"/>
+            <Label x:Name="sourceFolderLabel" Content="Folder not selected" HorizontalAlignment="Left" Margin="374,102,0,0" VerticalAlignment="Top" Width="330"/>
+            <Label x:Name="ouputFolderLabel" Content="Folder not selected" HorizontalAlignment="Left" Margin="374,0,0,0" VerticalAlignment="Center" Width="330"/>
+            <Label Content="Now processing:" HorizontalAlignment="Left" Margin="152,190,0,0" VerticalAlignment="Top" Width="99"/>
+            <Label Content="-- Nothing --" HorizontalAlignment="Left" Margin="257,190,0,0" VerticalAlignment="Top" Width="447"/>
         </Grid>
     </Grid>
 </UserControl>
