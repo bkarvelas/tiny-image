@@ -10,9 +10,9 @@
         <Grid Width="714" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
             <ToggleButton x:Name="syncButton"  Content="Sync" HorizontalAlignment="Left" Background="#FF2D2D2D" Margin="257,66,0,0" VerticalAlignment="Top" Height="30" Width="100" Checked="syncButton_Checked" Unchecked="syncButton_Unchecked"/>
             <Button x:Name="sourceFolderButton" Content="Source Folder" Width="100" Height="30" Margin="257,100,357,170" Click="sourceFolderButton_Click" />
-            <Button x:Name="ouputFolderButton" Content="Output Folder" Width="100" Height="30" Margin="257,135,357,135" Click="ouputFolderButton_Click"/>
+            <Button x:Name="ouputFolderButton" Content="Output Folder" Width="100" Height="30" Margin="257,135,357,135" Click="outputFolderButton_Click"/>
             <Label x:Name="sourceFolderLabel" Content="Folder not selected" HorizontalAlignment="Left" Margin="374,102,0,0" VerticalAlignment="Top" Width="330"/>
-            <Label x:Name="ouputFolderLabel" Content="Folder not selected" HorizontalAlignment="Left" Margin="374,0,0,0" VerticalAlignment="Center" Width="330"/>
+            <Label x:Name="outputFolderLabel" Content="Folder not selected" HorizontalAlignment="Left" Margin="374,0,0,0" VerticalAlignment="Center" Width="330"/>
             <Label Content="Now processing:" HorizontalAlignment="Left" Margin="152,190,0,0" VerticalAlignment="Top" Width="99"/>
             <Label Content="-- Nothing --" HorizontalAlignment="Left" Margin="257,190,0,0" VerticalAlignment="Top" Width="447"/>
         </Grid>
