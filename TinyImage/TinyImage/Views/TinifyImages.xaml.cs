@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Threading.Tasks;
@@ -7,16 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TinifyAPI;
 using MessageBox = System.Windows.MessageBox;
-
-using System.Text;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TinyImage.Views
 {
@@ -45,9 +34,6 @@ namespace TinyImage.Views
             // Dispose after using
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
-                // TODO: Remove this line 
-                folderDialog.SelectedPath = @"C:\Users\arctu\Desktop\TinifyTesting";
-
                 DialogResult selectFolderDialogResult = folderDialog.ShowDialog();
 
                 if (selectFolderDialogResult == DialogResult.OK)
@@ -64,9 +50,6 @@ namespace TinyImage.Views
             // Dispose after using
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
-                // TODO: Remove this line 
-                folderDialog.SelectedPath = @"C:\Users\arctu\Desktop\TinifyTesting";
-
                 DialogResult selectFolderDialogResult = folderDialog.ShowDialog();
 
                 if (selectFolderDialogResult == DialogResult.OK)
@@ -143,8 +126,7 @@ namespace TinyImage.Views
                 {
                     foreach (FileInfo outFile in outputDirectoryInfo.GetFiles())
                     {
-                        string cleanOutFile =
-                            System.IO.Path.GetFileNameWithoutExtension(outFile.Name).Replace("_tiny", "");
+                        string cleanOutFile = Path.GetFileNameWithoutExtension(outFile.Name).Replace("_tiny", "");
 
                         if (sourceDirectoryInfo.GetFiles().Select(name => name.ToString()).Contains(cleanOutFile))
                         {
@@ -155,7 +137,7 @@ namespace TinyImage.Views
                             var sourceFileTask = Tinify.FromFile(_sourceFolderPath + sourceFile.Name);
                             filesToTinify.Add(Task.Run(() =>
                                  sourceFileTask.ToFile(
-                                     _outputFolderPath + System.IO.Path.GetFileNameWithoutExtension(sourceFile.Name) + "_tiny.png")));
+                                     _outputFolderPath + Path.GetFileNameWithoutExtension(sourceFile.Name) + "_tiny.png")));
                         }
                     }
 
@@ -173,34 +155,38 @@ namespace TinyImage.Views
         {
             if (!folder.Equals(string.Empty))
             {
-                _watcher = new FileSystemWatcher(folder);
-
-                _watcher.NotifyFilter = NotifyFilters.Attributes
+                _watcher = new FileSystemWatcher(folder)
+                {
+                    NotifyFilter = NotifyFilters.Attributes
                                      | NotifyFilters.CreationTime
                                      | NotifyFilters.DirectoryName
                                      | NotifyFilters.FileName
                                      | NotifyFilters.LastAccess
                                      | NotifyFilters.LastWrite
                                      | NotifyFilters.Security
-                                     | NotifyFilters.Size;
+                                     | NotifyFilters.Size,
+                    Filter = "*.png"
+                };
 
                 _watcher.Changed += new FileSystemEventHandler(OnFolderChange);
 
-                // TODO: Use commented events
-                //watcher.Created += OnCreated;
-                //watcher.Deleted += OnDeleted;
-                //watcher.Renamed += OnRenamed;
-
+                _watcher.Created += new FileSystemEventHandler(OnFolderChange);
                 _watcher.Error += new ErrorEventHandler(OnError);
 
-                _watcher.Filter = "*.jpg | *.png";
+                // TODO: Use commented events
+                //watcher.Deleted += OnDeleted;
+                //watcher.Renamed += OnRenamed;
+                
                 _watcher.IncludeSubdirectories = true;
                 _watcher.EnableRaisingEvents = true;
             }
         }
 
-        private void OnFolderChange(object sender, FileSystemEventArgs e)
+        private async void OnFolderChange(object sender, FileSystemEventArgs e)
         {
+            // OnFolderChange compress every new file
+            var sourceFileTask = Tinify.FromFile(e.FullPath);
+            await sourceFileTask.ToFile(_outputFolderPath + Path.GetFileNameWithoutExtension(e.Name) + "_tiny.png");
         }
 
         private void OnError(object sender, ErrorEventArgs e)
